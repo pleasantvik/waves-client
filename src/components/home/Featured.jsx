@@ -5,7 +5,7 @@ export const Featured = () => {
     {
       img: "/images/featured/featured_home.jpg",
       title: "Fender",
-      subtitle: "Custm shop",
+      subtitle: "Custom shop",
       linkTitle: "Shop Now",
       linkTo: "/shop",
     },
@@ -19,7 +19,7 @@ export const Featured = () => {
     {
       img: "/images/featured/featured_home_3.jpg",
       title: "Fender",
-      subtitle: "Custm shop",
+      subtitle: "Custom shop",
       linkTitle: "Shop Now",
       linkTo: "/shop",
     },

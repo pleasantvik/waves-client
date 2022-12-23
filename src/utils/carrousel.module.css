@@ -19,12 +19,13 @@
 }
 
 .tag {
-  background: #82828287;
+  /* background: #82828287;
   background: #b28451;
   color: #ffffff;
   padding: 0px 20px;
   text-transform: uppercase;
   display: table;
+  margin-bottom: 1rem; */
 }
 .carrousel__actions h3 {
   font-size: 4rem;

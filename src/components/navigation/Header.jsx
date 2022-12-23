@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <header className={classes.header}>
       <div className={`container ${classes.header__container}`}>
-        <div className={classes.header__logo}>Waves</div>
+        <div className={classes.header__logo}>Guitars</div>
         <div className={classes.header__right}>
           <div className={classes.header__top__right}>
             <div className={classes.header__nav}>

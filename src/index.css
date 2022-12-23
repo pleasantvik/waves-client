@@ -60,3 +60,34 @@ li {
 ul li:not(:last-child) {
   margin-bottom: 1rem;
 }
+
+.link_default,
+.button_default {
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  display: table;
+  background: var(--color-secondary);
+  margin: 0 auto;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.link_default:hover,
+.button_default:hover {
+  background: var(--bck-yellow);
+  color: #fff;
+  color: var(--color-secondary);
+}
+
+.tag {
+  background: #82828287;
+  color: #ffffff;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  display: table;
+}
+.mb {
+  margin-bottom: 1rem;
+}
