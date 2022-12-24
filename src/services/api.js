@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export const getProductsBySort = async () => {
+export const getProductsBySort = async (limit, sort) => {
   try {
     const data = await axios.get("api/products", {
       params: {
-        limit: 4,
-        sort: "price",
+        limit,
+        sort,
       },
     });
 

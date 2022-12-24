@@ -1,3 +1,4 @@
+import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 export const WavesButton = (props) => {
@@ -18,5 +19,31 @@ export const WavesButton = (props) => {
       </Link>
     );
   }
+
+  if (props.type === "bag_link") {
+    template = (
+      <div
+        className="bag_link"
+        onClick={() => props.runAction()}
+        style={{
+          ...props.style,
+        }}
+      >
+        <AddShoppingCart
+          style={{
+            fontSize: props.iconSize,
+          }}
+        />
+      </div>
+    );
+  }
   return template;
+};
+
+export const renderCardImage = (image) => {
+  if (image.length > 0) {
+    return image[0];
+  } else {
+    return "/images/image_not_available.png";
+  }
 };

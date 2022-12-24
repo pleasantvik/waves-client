@@ -8,5 +8,17 @@ export const apiSlice = createApi({
 
   endpoints: (builder) => ({
     signup: builder.mutation({}),
+    getProducts: builder.query({
+      query: (init) => ({
+        url: "/products",
+        method: "GET",
+        params: {
+          limit: init.limit,
+          sort: init.sort,
+        },
+      }),
+    }),
   }),
 });
+
+export const { useGetProductsQuery } = apiSlice;
