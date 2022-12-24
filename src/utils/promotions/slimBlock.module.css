@@ -1,0 +1,43 @@
+.slim__promotion__img {
+  height: 40rem;
+  background-size: cover !important;
+  background-position: top center !important;
+  padding: 7rem;
+  box-sizing: border-box;
+}
+
+/* .tag {
+  background: #82828287;
+  color: #ffffff;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  display: table;
+} */
+
+.slim__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 1rem auto;
+}
+
+.subtitle {
+  font-size: 3rem;
+  font-weight: 300;
+  /* margin-top: 1rem; */
+  margin-bottom: 0.7rem auto;
+}
+
+.slim_promotion .my_link a {
+  margin: 10px auto;
+}
+
+.slim_promotion .btn {
+  margin-top: 20px;
+}

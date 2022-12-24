@@ -1,0 +1,37 @@
+.carrousel__wrapper {
+  height: 700px;
+  overflow: hidden;
+}
+
+.carrousel__image {
+  background-size: cover !important;
+}
+
+.carrousel__slide {
+  position: relative;
+}
+
+.carrousel__actions {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-10%, -50%);
+}
+
+.tag {
+  /* background: #82828287;
+  background: #b28451;
+  color: #ffffff;
+  padding: 0px 20px;
+  text-transform: uppercase;
+  display: table;
+  margin-bottom: 1rem; */
+}
+.carrousel__actions h3 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+.carrousel__actions h4 {
+  font-size: 3rem;
+  font-style: italic;
+}
