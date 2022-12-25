@@ -74,6 +74,27 @@ ul li:not(:last-child) {
   transition: all 0.3s ease;
 }
 
+.btn_reuseable {
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  background: var(--color-secondary);
+  margin: 0 auto;
+  color: #fff;
+  transition: all 0.3s ease;
+  /* border-radius: 12px; */
+}
+.btn_reuseable:hover {
+  background: var(--bck-yellow);
+  color: #fff;
+  color: var(--color-secondary);
+}
+
+.btn_reuseable:disabled {
+  background-color: #6b6b6b;
+  color: #101d2c;
+}
 .link_default:hover,
 .button_default:hover {
   background: var(--bck-yellow);
@@ -147,4 +168,32 @@ ul li:not(:last-child) {
   background-position: center !important;
   background-size: cover !important;
   border: 1px solid #f0f0f0;
+}
+
+.MuiFormHelperText-root.Mui-error {
+  font-size: 1.4rem;
+}
+
+.MuiInputBase-input-MuiOutlinedInput-input {
+  font-size: 1.4rem !important;
+}
+
+.MuiFormControl-root {
+  width: 100%;
+}
+
+.MuiList-root {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.MuiListItem-root {
+  padding: "10px 23px 10px 0";
+}
+
+.MuiFormLabel-root-MuiInputLabel-root {
+  font-size: 1.4rem !important;
+}
+
+.MuiFormLabel-root {
+  font-size: 1.4rem !important;
 }
