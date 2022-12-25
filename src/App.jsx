@@ -3,6 +3,7 @@ import { Header } from "components/navigation/Header";
 import { Footer } from "components/navigation/Footer";
 import { Home } from "components/home";
 import { Layout } from "hoc/Layout";
+import { RegisterLogin } from "components/auth";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Header />
       <Layout>
         <Routes>
+          <Route path="/signin" element={<RegisterLogin />} />
           <Route path="/" element={<Home />} />
           <Route path="*" element={<p>Not found</p>} />
         </Routes>

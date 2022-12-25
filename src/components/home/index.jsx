@@ -53,6 +53,7 @@ export const Home = () => {
     //     notificationAction.onSuccess({ success: "success", msg: "Great" })
     //   );
     // }
+
     if (!soldIsFetching && bySoldIsError) {
       dispatch(
         notificationAction.onError({

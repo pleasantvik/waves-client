@@ -7,7 +7,13 @@ export const apiSlice = createApi({
   }),
 
   endpoints: (builder) => ({
-    signup: builder.mutation({}),
+    signup: builder.mutation({
+      query: (init) => ({
+        url: "/users/signup",
+        method: "POST",
+        body: init,
+      }),
+    }),
     getProducts: builder.query({
       query: (init) => ({
         url: "/products",
@@ -21,4 +27,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useGetProductsQuery } = apiSlice;
+export const { useGetProductsQuery, useSignupMutation } = apiSlice;
