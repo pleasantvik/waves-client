@@ -1,5 +1,6 @@
 import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const WavesButton = (props) => {
   let template = "";
@@ -40,10 +41,55 @@ export const WavesButton = (props) => {
   return template;
 };
 
+export const showErrorToast = (msg) => {
+  toast.error(msg, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
+export const showSuccessToast = (msg) => {
+  toast.success(msg, {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
+
 export const renderCardImage = (image) => {
   if (image.length > 0) {
     return image[0];
   } else {
     return "/images/image_not_available.png";
+  }
+};
+
+export const showToast = (type, msg) => {
+  switch (type) {
+    case "SUCCESS":
+      toast.success(msg, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      break;
+
+    case "ERROR":
+      toast.error(msg, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+
+      break;
+
+    default:
+      return false;
   }
 };
