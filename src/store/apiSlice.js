@@ -87,6 +87,13 @@ export const apiSlice = createApi({
       }),
       // invalidatesTags: ["products"],
     }),
+    addProduct: builder.mutation({
+      query: (init) => ({
+        url: "/products",
+        method: "POST",
+        body: init,
+      }),
+    }),
   }),
 });
 
@@ -100,4 +107,5 @@ export const {
   usePaginateProductMutation,
   useDeleteProductMutation,
   useGetBrandsQuery,
+  useAddProductMutation,
 } = apiSlice;
