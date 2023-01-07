@@ -1,23 +1,30 @@
 import { TextField } from "@mui/material";
 import LoadingSpinner from "components/reuseable/Spinner";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useSignupMutation } from "store/apiSlice";
+import { setCredential } from "store/auth/authSlice";
 import { errorHelper, showToast } from "utils/tools";
 import { signup } from "./schema";
 // import { schema } from '../../utils/schema'
 // import { addNewPost } from './postSlice'
 
 export const Signup = (props) => {
+  const dispatch = useDispatch();
+
   const [signupUser, { isLoading, isError, error, isSuccess }] =
     useSignupMutation();
 
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
-      email: "ade@test.com",
+      email: "bola2dee@gmail.com",
       password: "test1234",
       confirmPassword: "test1234",
-      firstname: "ifemade",
-      lastname: "",
+      firstname: "Bolatito",
+      lastname: "Ayoola",
     },
     validationSchema: signup,
     onSubmit: (values) => {
@@ -35,12 +42,16 @@ export const Signup = (props) => {
   const submitForm = async (values) => {
     if (canSave) {
       try {
-        await signupUser({ ...values }).unwrap();
+        const res = await signupUser({ ...values }).unwrap();
         formik.values.email = "";
         formik.values.lastname = "";
         formik.values.firstname = "";
         formik.values.password = "";
         formik.values.confirmPassword = "";
+
+        dispatch(setCredential({ user: res?.data, accesstoken: res?.token }));
+        localStorage.setItem("waveToken", res?.token);
+        navigate("/");
       } catch (err) {
         console.log("Failed to save post");
       } finally {
@@ -59,6 +70,7 @@ export const Signup = (props) => {
   }
   if (isSuccess) {
     showToast("SUCCESS", "Account created successfully");
+    // navigate("/dashboard");
   }
   return (
     <div className="auth_container">
