@@ -1,0 +1,21 @@
+.action_btn {
+  width: 100px;
+  text-align: center;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+}
+
+.remove_btn {
+  background: #dc3545;
+}
+.remove_btn:hover {
+  background: #ee7782;
+}
+
+.edit_btn {
+  background: #117a8b;
+}
+.edit_btn:hover {
+  background: #3d99a8;
+}

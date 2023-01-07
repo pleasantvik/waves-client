@@ -1,6 +1,7 @@
 import { AddShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import cookie from "react-cookies";
 
 export const WavesButton = (props) => {
   let template = "";
@@ -99,3 +100,14 @@ export const errorHelper = (formik, value) => ({
   helperText:
     formik.errors[value] && formik.touched[value] ? formik.errors[value] : null,
 });
+
+// COOKIES
+export const getTokenCookie = () => cookie.load(`jwt`);
+
+export const removeTokenCookie = () => cookie.remove("jwt", { path: "/" });
+
+export const getAuthHeader = () => {
+  return {
+    headers: { Authorization: `Bearer ${getTokenCookie()}` },
+  };
+};
