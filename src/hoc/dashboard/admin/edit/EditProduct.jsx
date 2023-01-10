@@ -1,32 +1,18 @@
 import { useFormik } from "formik";
 import { DashboardLayout } from "hoc/dashboard/DashboardLayout";
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  useAddProductMutation,
-  useDeleteProductMutation,
   useGetBrandsQuery,
-  usePaginateProductMutation,
+  useGetProductQuery,
+  useUpdateProductMutation,
 } from "store/apiSlice";
-import {
-  byPaginate,
-  onRemove,
-  removedProduct,
-  reset,
-  selectPaginate,
-} from "store/productSlice";
+
 import { errorHelper, showToast } from "utils/tools";
 // import { ProductsTable } from "./ProductsTable";
 import {
   TextField,
-  Button,
   Divider,
   Select,
   FormControl,
@@ -34,40 +20,41 @@ import {
   MenuItem,
 } from "@mui/material";
 import { productSchema } from "components/auth/form/schema";
-import { getBrands } from "store/brandSlice";
+// import {  allBrands } from "store/brandSlice";
 import LoadingSpinner from "components/reuseable/Spinner";
-import { Upload } from "./Upload";
-import { PicViewer } from "./PicViewer";
+import { Upload } from "../add/Upload";
+import { PicViewer } from "../add/PicViewer";
 
-export const AddProduct = (props) => {
+export const EditProduct = (props) => {
+  const { id } = useParams();
+  // const allBrand = useSelector(allBrands);
+
+  const { data: prod, isLoading: prodLoading } = useGetProductQuery(id);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {
-    data: brands,
-    isLoading: brandsLoading,
-    error: brandError,
-    isError: brandIsError,
-  } = useGetBrandsQuery();
+  const { data: brands } = useGetBrandsQuery();
 
-  const [addProduct, { isLoading, isError, error, isSuccess }] =
-    useAddProductMutation();
-
+  const [updateProduct, { isError, error, isSuccess }] =
+    useUpdateProductMutation();
   useEffect(() => {
     // console.log(brands?.data, "BRANDS");
-    dispatch(getBrands({ brands: brands?.data }));
+    // dispatch(getBrands({ brands: brands?.data }));
   }, [dispatch, brands]);
 
   const formik = useFormik({
+    enableReinitialize: true,
+
     initialValues: {
-      model: "",
+      model: prod?.data?.product?.model,
       brand: "",
-      frets: "",
-      woodtype: "",
-      description: "",
-      price: "",
-      shipping: false,
-      available: "",
-      images: [],
+      frets: prod?.data?.product?.frets,
+      woodtype: prod?.data?.product?.woodtype,
+      description: prod?.data?.product?.description,
+      price: prod?.data?.product?.price,
+      shipping: prod?.data?.product?.shipping === true ? true : false,
+      available: prod?.data?.product?.available,
+      images: prod?.data?.product?.images,
     },
     validationSchema: productSchema,
     onSubmit: (values) => {
@@ -82,17 +69,9 @@ export const AddProduct = (props) => {
     formik.setFieldValue("images", picArr);
   };
 
-  console.log(formik.values);
-  const canSave =
-    !!formik.model &&
-    !!formik.brand &&
-    !!formik.woodtype &&
-    !!formik.description &&
-    !isLoading;
-
   const submitForm = async (values) => {
     try {
-      const res = await addProduct({ ...values }).unwrap();
+      const res = await updateProduct({ ...values, id }).unwrap();
 
       console.log(res);
 
@@ -113,7 +92,7 @@ export const AddProduct = (props) => {
     showToast("ERROR", msg);
   }
   if (isSuccess) {
-    showToast("SUCCESS", "Product created successfully");
+    showToast("SUCCESS", "Product updated successfully");
   }
 
   const deletePic = (item) => {
@@ -124,12 +103,12 @@ export const AddProduct = (props) => {
   return (
     <DashboardLayout title="Add Product">
       <Fragment>
-        {isLoading && <LoadingSpinner />}
+        {prodLoading && <LoadingSpinner />}
         <PicViewer formik={formik} deletePic={deletePic} />
         <Upload picValue={(pic) => handlePicValue(pic)} />
         <Divider className="mt-3 mb-3" />
 
-        {!isLoading && (
+        {!prodLoading && (
           <form className="mt-3 article_form" onSubmit={formik.handleSubmit}>
             <div className="form-group">
               <TextField

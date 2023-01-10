@@ -2,6 +2,7 @@ import { renderCardImage, WavesButton } from "utils/tools";
 import classes from "./card.module.css";
 
 export const Card = (props) => {
+  console.log(props.item.images, "PROPS");
   const handleAddToCart = (item) => {
     alert("add to cart");
   };

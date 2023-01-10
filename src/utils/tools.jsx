@@ -69,7 +69,7 @@ export const showSuccessToast = (msg) => {
 
 export const renderCardImage = (image) => {
   if (image.length > 0) {
-    return image[0];
+    return image[0].url;
   } else {
     return "/images/image_not_available.png";
   }
