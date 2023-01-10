@@ -2,6 +2,7 @@ import { Card } from "./Card";
 import classes from "./cardBlock.module.css";
 
 export const CardBlock = ({ shop, title, items, grid }) => {
+  // console.log(items, "ITEMS");
   const renderCards = () => {
     return (
       items &&

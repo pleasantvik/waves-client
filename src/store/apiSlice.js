@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getTokenCookie, getAuthHeader } from "utils/tools";
+import { getTokenCookie } from "utils/tools";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "/api",
@@ -42,6 +42,19 @@ export const apiSlice = createApi({
           limit: init.limit,
           sort: init.sort,
         },
+      }),
+    }),
+    getProduct: builder.query({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: "GET",
+      }),
+    }),
+    updateProduct: builder.mutation({
+      query: (init) => ({
+        url: `/products/${init.id}`,
+        method: "PATCH",
+        body: init,
       }),
     }),
     getAuth: builder.query({
@@ -94,6 +107,13 @@ export const apiSlice = createApi({
         body: init,
       }),
     }),
+    uploadProductImage: builder.mutation({
+      query: (init) => ({
+        url: "/products/upload",
+        method: "POST",
+        body: init,
+      }),
+    }),
   }),
 });
 
@@ -108,4 +128,7 @@ export const {
   useDeleteProductMutation,
   useGetBrandsQuery,
   useAddProductMutation,
+  useUploadProductImageMutation,
+  useGetProductQuery,
+  useUpdateProductMutation,
 } = apiSlice;
