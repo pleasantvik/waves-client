@@ -9,7 +9,6 @@ import {
 import { showToast } from "utils/tools";
 import classes from "./Header.module.css";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 export const Header = () => {
   const user = useSelector(selectCurrentUser);
   const token = useSelector(selectCurrentToken);
