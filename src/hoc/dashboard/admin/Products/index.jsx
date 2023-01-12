@@ -3,20 +3,14 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { DashboardLayout } from "hoc/dashboard/DashboardLayout";
 import React, { useCallback, useEffect, useReducer, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   useDeleteProductMutation,
   usePaginateProductMutation,
 } from "store/apiSlice";
-import {
-  byPaginate,
-  onRemove,
-  removedProduct,
-  reset,
-  selectPaginate,
-} from "store/productSlice";
-import { errorHelper, showToast } from "utils/tools";
+import { byPaginate, onRemove } from "store/productSlice";
+import { errorHelper } from "utils/tools";
 import { ProductsTable } from "./ProductsTable";
 import { TextField } from "@mui/material";
 
@@ -31,20 +25,19 @@ const defaultValues = {
 
 export const AdminProducts = () => {
   // const { id } = useParams();
-  const allProduct = useSelector(selectPaginate);
+  // const allProduct = useSelector(selectPaginate);
 
-  const onRemoveProduct = useSelector(removedProduct);
+  // const onRemoveProduct = useSelector(removedProduct);
   const [removeModal, setRemoveModal] = useState(false);
   const [toRemove, setToRemove] = useState(null);
   const navigate = useNavigate();
-  const [deleteProduct, { isLoading: delLoading, isSuccess }] =
-    useDeleteProductMutation();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const [query, setQuery] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     defaultValues
   );
-  const [products, { isLoading }] = usePaginateProductMutation();
+  const [products] = usePaginateProductMutation();
   const dispatch = useDispatch();
 
   const gotoPage = (page) => {

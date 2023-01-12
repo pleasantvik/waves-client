@@ -18,7 +18,7 @@ export const UpdateProfile = () => {
   const token = useSelector(selectCurrentToken);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [updateUserProfile, { isLoading, isError, error, isSuccess }] =
+  const [updateUserProfile, { isLoading, isSuccess }] =
     useUpdateProfileMutation();
 
   const formik = useFormik({

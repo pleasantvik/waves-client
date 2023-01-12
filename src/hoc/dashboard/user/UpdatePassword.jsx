@@ -1,26 +1,18 @@
 import { TextField } from "@mui/material";
-import { passwordUpdate, profileUpdate } from "components/auth/form/schema";
+import { passwordUpdate } from "components/auth/form/schema";
 import LoadingSpinner from "components/reuseable/Spinner";
 import { useFormik } from "formik";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  useUpdatePasswordMutation,
-  useUpdateProfileMutation,
-} from "store/apiSlice";
-import {
-  selectCurrentToken,
-  selectCurrentUser,
-  setCredential,
-} from "store/auth/authSlice";
+import { useUpdatePasswordMutation } from "store/apiSlice";
+import { setCredential } from "store/auth/authSlice";
 import { errorHelper, showToast } from "utils/tools";
 
 export const UpdatePassword = () => {
-  const user = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [updateUserPassword, { isLoading, isError, error, isSuccess }] =
+  const [updateUserPassword, { isLoading, isSuccess }] =
     useUpdatePasswordMutation();
 
   const formik = useFormik({

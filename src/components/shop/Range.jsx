@@ -2,7 +2,7 @@ import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { errorHelper, showToast } from "utils/tools";
+import { errorHelper } from "utils/tools";
 import {
   ListItem,
   List,
@@ -11,7 +11,6 @@ import {
   ListItemSecondaryAction,
   Checkbox,
   TextField,
-  Button,
 } from "@mui/material";
 import React, { useState } from "react";
 
@@ -51,6 +50,8 @@ export const RangeSelect = (props) => {
           </ListItem>
         ))
       : null;
+
+  console.log(renderList);
 
   const formik = useFormik({
     initialValues: { min: 0, max: 5000 },

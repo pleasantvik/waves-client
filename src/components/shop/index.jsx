@@ -2,7 +2,7 @@ import { GridOff, GridOn } from "@mui/icons-material";
 import { PaginationNav } from "utils/Pagination";
 import { Fragment, useCallback, useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allBrands, getBrands } from "store/brandSlice";
+import { getBrands } from "store/brandSlice";
 import { byPaginate, selectPaginate } from "store/productSlice";
 import { CardBlock } from "utils/products/CardBlock";
 import { useGetBrandsQuery, usePaginateProductMutation } from "store/apiSlice";

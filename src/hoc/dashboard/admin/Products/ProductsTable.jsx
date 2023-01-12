@@ -1,4 +1,3 @@
-import LoadingSpinner from "components/reuseable/Spinner";
 import React from "react";
 import { Table, Pagination, Modal, Button } from "react-bootstrap";
 import Moment from "react-moment";

@@ -1,7 +1,6 @@
 import { Fragment, useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import * as Yup from "yup";
-import axios from "axios";
 import LoadingSpinner from "components/reuseable/Spinner";
 import { useFormik } from "formik";
 import { useUploadProductImageMutation } from "store/apiSlice";
@@ -9,8 +8,7 @@ import { useUploadProductImageMutation } from "store/apiSlice";
 export const Upload = ({ picValue }) => {
   const [loading, setLoading] = useState(false);
 
-  const [uploadImg, { isLoading, isError, error, isSuccess }] =
-    useUploadProductImageMutation();
+  const [uploadImg] = useUploadProductImageMutation();
 
   // const token = localStorage.getItem("waveToken");
 

@@ -1,32 +1,14 @@
 import { useFormik } from "formik";
 import { DashboardLayout } from "hoc/dashboard/DashboardLayout";
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  useAddProductMutation,
-  useDeleteProductMutation,
-  useGetBrandsQuery,
-  usePaginateProductMutation,
-} from "store/apiSlice";
-import {
-  byPaginate,
-  onRemove,
-  removedProduct,
-  reset,
-  selectPaginate,
-} from "store/productSlice";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useAddProductMutation, useGetBrandsQuery } from "store/apiSlice";
+
 import { errorHelper, showToast } from "utils/tools";
 // import { ProductsTable } from "./ProductsTable";
 import {
   TextField,
-  Button,
   Divider,
   Select,
   FormControl,
@@ -42,12 +24,7 @@ import { PicViewer } from "./PicViewer";
 export const AddProduct = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {
-    data: brands,
-    isLoading: brandsLoading,
-    error: brandError,
-    isError: brandIsError,
-  } = useGetBrandsQuery();
+  const { data: brands } = useGetBrandsQuery();
 
   const [addProduct, { isLoading, isError, error, isSuccess }] =
     useAddProductMutation();
@@ -83,12 +60,12 @@ export const AddProduct = (props) => {
   };
 
   console.log(formik.values);
-  const canSave =
-    !!formik.model &&
-    !!formik.brand &&
-    !!formik.woodtype &&
-    !!formik.description &&
-    !isLoading;
+  // const canSave =
+  //   !!formik.model &&
+  //   !!formik.brand &&
+  //   !!formik.woodtype &&
+  //   !!formik.description &&
+  //   !isLoading;
 
   const submitForm = async (values) => {
     try {
