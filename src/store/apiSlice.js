@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getTokenCookie } from "utils/tools";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "/api",
+  baseUrl: "https://pleasantvik-waves.up.railway.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     // const token = getState().auth.token;
