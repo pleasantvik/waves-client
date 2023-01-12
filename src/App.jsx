@@ -18,6 +18,7 @@ import { AdminProducts } from "hoc/dashboard/admin/Products";
 import { AddProduct } from "hoc/dashboard/admin/add/AddProduct";
 import { EditProduct } from "hoc/dashboard/admin/edit/EditProduct";
 import { Shop } from "components/shop";
+import { ProductDetail } from "components/product";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,9 @@ const App = () => {
         <Routes>
           {token && <Route path="/dashboard" element={<UserDashboard />} />}
           {token && <Route path="/shop" element={<Shop />} />}
+          {token && (
+            <Route path="/product_detail/:id" element={<ProductDetail />} />
+          )}
           {token && (
             <Route path="/dashboard/user/profile" element={<UserProfile />} />
           )}

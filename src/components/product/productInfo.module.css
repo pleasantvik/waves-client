@@ -1,0 +1,143 @@
+.page_top {
+  border-bottom: 1px solid #999592;
+  padding: 20px 0px;
+  text-transform: uppercase;
+}
+.page_container {
+  min-height: 75vh;
+}
+
+.product_detail_wrapper {
+  display: flex;
+  margin-bottom: 140px;
+  margin-top: 60px;
+}
+
+.product_detail_wrapper .right {
+  flex-grow: 1;
+  min-height: 800px;
+}
+
+.product_detail_wrapper .left div {
+  padding-right: 20px;
+}
+
+.product_detail_wrapper .left div img {
+  width: 400px;
+}
+
+.slick-slide .img-block {
+  width: 100%;
+  height: 100vh;
+  background-size: cover !important;
+}
+
+/* background: url(http://res.cloudinary.com/dxxrvghna/image/upload/v1616397932/site_uploads/1616397929236.png) no-repeat;
+      width: 100%;
+      height: 100vh;
+      background-size: contain; */
+
+.product_detail_wrapper p {
+  font-size: 17px;
+  font-family: Arial, Helvetica;
+  font-weight: lighter;
+}
+
+.product_tags {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.tag {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tag svg {
+  font-size: 43px;
+  color: #e4e4e4;
+  width: 50px;
+}
+
+.tag_text {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #999592;
+  padding-left: 20px;
+  width: 160px;
+}
+
+.price {
+  font-size: 40px;
+  font-weight: 300;
+}
+.cart {
+  width: 149px;
+}
+.user_cart_sum {
+  font-size: 20px;
+  text-transform: uppercase;
+  border: 1px solid #e7e7e7;
+  background: #f7f7f7;
+  padding: 20px 30px;
+}
+
+.cart_no_items svg,
+.cart_success svg {
+  font-size: 130px;
+  color: #717171;
+}
+.cart_no_items,
+.cart_success {
+  text-align: center;
+  font-size: 28px;
+  color: #999592;
+}
+
+.product_actions {
+  padding: 20px 0px 30px 0px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.item {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #838383;
+}
+
+.product_image_container {
+  margin-top: 30px;
+  padding-right: 70px;
+}
+
+.main_pic {
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.main_pic div {
+  width: 100%;
+  height: 446px;
+  border: 1px solid #d9d9d9;
+  background-size: contain !important;
+  background-position: center center !important;
+}
+
+.main_thumbs {
+  margin-top: 10px;
+}
+
+.main_thumbs .thumb {
+  cursor: pointer;
+  height: 200px;
+  width: 50%;
+  background-size: cover !important;
+  background-position: bottom center !important;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  float: left;
+}
+
+.paypal_button_container {
+  margin: 10px 0px;
+}
