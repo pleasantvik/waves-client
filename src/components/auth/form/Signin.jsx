@@ -11,8 +11,7 @@ import { signin } from "./schema";
 export const Signin = (props) => {
   const dispatch = useDispatch();
 
-  const [signinUser, { isLoading, isError, error, isSuccess }] =
-    useSigninMutation();
+  const [signinUser, { isLoading, isError, isSuccess }] = useSigninMutation();
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {

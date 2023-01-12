@@ -8,8 +8,6 @@ import { useDispatch } from "react-redux";
 import { useGetProductsQuery } from "store/apiSlice";
 import { CardBlock } from "utils/products/CardBlock";
 import LoadingSpinner from "components/reuseable/Spinner";
-import { notificationAction } from "store/notificationSlice";
-import { showToast } from "utils/tools";
 import { byDate, bySold } from "store/productSlice";
 
 const slimPromotion = {
@@ -23,25 +21,11 @@ const slimPromotion = {
 export const Home = () => {
   const dispatch = useDispatch();
 
-  const {
-    data: orderSold,
-    isLoading: bySoldLoading,
-    isError: bySoldIsError,
-    error: bySoldError,
-    isSuccess: soldSuccess,
-    isFetching: soldIsFetching,
-  } = useGetProductsQuery({
+  const { data: orderSold, isLoading: bySoldLoading } = useGetProductsQuery({
     limit: 4,
     sort: "itemSold",
   });
-  const {
-    data: orderDate,
-    isLoading: byDateLoading,
-    isError: byDateIsError,
-    error: byDateError,
-    isSuccess: dateSuccess,
-    isFetching: dateIsFetching,
-  } = useGetProductsQuery({
+  const { data: orderDate, isLoading: byDateLoading } = useGetProductsQuery({
     limit: 4,
     sort: "-date",
   });

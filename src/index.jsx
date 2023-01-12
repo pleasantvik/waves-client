@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 // import "./resources/styles/styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
