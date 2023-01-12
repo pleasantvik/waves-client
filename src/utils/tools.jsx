@@ -39,6 +39,19 @@ export const WavesButton = (props) => {
       </div>
     );
   }
+
+  if (props.type === "add_to_cart_link") {
+    template = (
+      <div className="add_to_cart_link" onClick={() => props.runAction()}>
+        <AddShoppingCart
+          style={{
+            fontSize: props.iconSize,
+          }}
+        />
+        Add to cart
+      </div>
+    );
+  }
   return template;
 };
 
