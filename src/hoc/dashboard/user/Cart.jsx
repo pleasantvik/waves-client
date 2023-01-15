@@ -1,5 +1,4 @@
 import LoadingSpinner from "components/reuseable/Spinner";
-import { indexOf } from "lodash";
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, userCart } from "store/auth/authSlice";
