@@ -26,21 +26,21 @@ const App = () => {
 
   const { data: isAuth, isLoading, error, isError } = useGetAuthQuery();
 
-  useEffect(() => {
-    dispatch(
-      setCredential({
-        user: { user: isAuth?.data },
-        accesstoken: isAuth?.token,
-      })
-    );
-  }, [dispatch, isAuth]);
+  // useEffect(() => {
+  //   dispatch(
+  //     setCredential({
+  //       user: { user: isAuth?.data },
+  //       accesstoken: isAuth?.token,
+  //     })
+  //   );
+  // }, [dispatch, isAuth]);
 
   if (isError && error?.status === 500) {
     showToast("ERROR", "Use the log in route to gain full access!");
   }
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    // return <LoadingSpinner />;
   }
 
   return (
@@ -48,11 +48,15 @@ const App = () => {
       <Header />
       <Layout>
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/signin" element={<RegisterLogin />} />
+          <Route path="/product_detail/:id" element={<ProductDetail />} />
           {token && <Route path="/dashboard" element={<UserDashboard />} />}
-          {token && <Route path="/shop" element={<Shop />} />}
-          {token && (
+          {/* {token && <Route path="/shop" element={<Shop />} />} */}
+          {/* {token && (
             <Route path="/product_detail/:id" element={<ProductDetail />} />
-          )}
+          )} */}
           {token && (
             <Route path="/dashboard/user/profile" element={<UserProfile />} />
           )}
@@ -75,8 +79,7 @@ const App = () => {
             />
           )}
 
-          {token && <Route path="/signin" element={<RegisterLogin />} />}
-          <Route path="/" element={<Home />} />
+          {/* {token && <Route path="/signin" element={<RegisterLogin />} />} */}
           {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </Layout>
