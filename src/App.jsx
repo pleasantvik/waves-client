@@ -19,6 +19,7 @@ import { AddProduct } from "hoc/dashboard/admin/add/AddProduct";
 import { EditProduct } from "hoc/dashboard/admin/edit/EditProduct";
 import { Shop } from "components/shop";
 import { ProductDetail } from "components/product";
+import { Cart } from "hoc/dashboard/user/Cart";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,14 +27,14 @@ const App = () => {
 
   const { data: isAuth, isLoading, error, isError } = useGetAuthQuery();
 
-  // useEffect(() => {
-  //   dispatch(
-  //     setCredential({
-  //       user: { user: isAuth?.data },
-  //       accesstoken: isAuth?.token,
-  //     })
-  //   );
-  // }, [dispatch, isAuth]);
+  useEffect(() => {
+    dispatch(
+      setCredential({
+        user: { user: isAuth?.data },
+        accesstoken: isAuth?.token,
+      })
+    );
+  }, [dispatch, isAuth]);
 
   if (isError && error?.status === 500) {
     showToast("ERROR", "Use the log in route to gain full access!");
@@ -53,6 +54,9 @@ const App = () => {
           <Route path="/signin" element={<RegisterLogin />} />
           <Route path="/product_detail/:id" element={<ProductDetail />} />
           {token && <Route path="/dashboard" element={<UserDashboard />} />}
+          {token && (
+            <Route path="/dashboard/user/user_cart" element={<Cart />} />
+          )}
           {/* {token && <Route path="/shop" element={<Shop />} />} */}
           {/* {token && (
             <Route path="/product_detail/:id" element={<ProductDetail />} />
