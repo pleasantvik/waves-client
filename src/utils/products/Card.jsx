@@ -1,10 +1,27 @@
-import { renderCardImage, WavesButton } from "utils/tools";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItem, selectCurrentUser } from "store/auth/authSlice";
+import { AddToCart } from "utils/AddToCart";
+import { renderCardImage, showToast, WavesButton } from "utils/tools";
 import classes from "./card.module.css";
 
 export const Card = (props) => {
-  console.log(props.item.images, "PROPS");
+  const [modal, setModal] = useState(false);
+  const [errorType, setErrorType] = useState(null);
+  const user = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
+  const handleClose = () => setModal(false);
+  console.log(user);
   const handleAddToCart = (item) => {
-    alert("add to cart");
+    console.log(item, "CART");
+    if (!user) {
+      setModal(true);
+      setErrorType("no user");
+      return false;
+    }
+    // alert("dispatch");
+    dispatch(addCartItem(item));
+    showToast("SUCCESS", "Item added successfully");
   };
 
   return (
@@ -50,6 +67,11 @@ export const Card = (props) => {
           </div>
         </div>
       </div>
+      <AddToCart
+        modal={modal}
+        errorType={errorType}
+        handleClose={handleClose}
+      />
     </div>
   );
 };
